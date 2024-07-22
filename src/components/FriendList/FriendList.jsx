@@ -1,8 +1,10 @@
-import FriendListItem from "./FriendListItem/FriendListItem";
+import FriendListItem from "../FriendListItem/FriendListItem";
+import css from "./FriendList.module.css"
 
-function FriendList({ friends }) {
+
+const FriendList = ({ friends }) => {
     return (
-        <div>
+        <div className={css.box}>
             {friends.map((friend) => {
                 return (
                     <FriendListItem
