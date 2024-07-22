@@ -1,6 +1,9 @@
 import './App.css';
 import Profile from './components/Profile/Profile';
 import userData from './components/userData.json';
+import friends from "./components/friends.json";
+import FriendList from "./components/FriendList/FriendList";
+
 
 const App = () => {
   return (
@@ -17,9 +20,9 @@ const App = () => {
     <div>
         <FriendList friends={friends} />
       </div>
-      <div>
+      {/* <div>
         <TransactionHistory transactions={transactions} />
-      </div>
+      </div> */}
    </>
  );
 };
