@@ -5,10 +5,6 @@
     width: 500px;
 }
 
-.id {
-    display: none;
-}
-
 tbody tr:nth-child(even) {
     background-color: rgb(195, 195, 195);;
 }
