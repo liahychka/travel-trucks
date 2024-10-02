@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMovieCast } from '../../services/api';
 import { useParams } from 'react-router-dom';
-import css from './Cast.module.css';
+import css from './MovieCast.module.css';
 
-const Cast = () => {
+const MovieCast = () => {
     const { movieId } = useParams();
     const [castMovie, setcastMovie] = useState([]);
-
-    // console.log(castMovie);
 
     useEffect(() => {
         const getCast = async () => {
             const data = await fetchMovieCast(movieId);
-            setcastMovie(data);
+          setcastMovie(data);
         };
 
         getCast();
     }, [movieId]);
 
+    const baseUrl = "https://image.tmdb.org/t/p/w500/";
+  
  if (castMovie.length === 0) {
     return <p>There are no info about cast</p>;
   } else {
     return (
       <>
         <ul className={css.list}>
-          {castMovie.map(({ id, name, profile_path }) => {
+          {castMovie.map(({ id, name, profile_path, character }) => {
             if (profile_path) {
               return (
                 <li key={id} className={css.item}>
@@ -34,16 +34,16 @@ const Cast = () => {
                     className={css.img}
                   />
                   <p className="text"> {name}</p>
+                  <p>Character: {character}</p>
                 </li>
               );
             }
           })}
         </ul>
-        {error && <h2>Something went wrong ...</h2>}
       </>
     );
   }
 };
 
 
-export default Cast;
+export default MovieCast;

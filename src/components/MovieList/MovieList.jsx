@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { fetchMovie } from '../../services/api';
 import { Link } from 'react-router-dom';
 
-const MoviesApp = () => {
+const MovieList = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -15,8 +15,8 @@ const MoviesApp = () => {
   }, []);
 
   return (
-    <div>
-      <ul>
+      <div>
+          <ul>
         {movies.map(movie => (
             <li key={movie.id}>
             <Link to={movie.id.toString()} >
@@ -29,4 +29,4 @@ const MoviesApp = () => {
   )
 }
 
-export default MoviesApp;
+export default MovieList;

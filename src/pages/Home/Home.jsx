@@ -1,11 +1,11 @@
 import React from 'react'
-import MoviesApp from '../../components/MoviesApp/MoviesApp'
+import MovieList from '../../components/MovieList/MovieList'
 
 const Home = () => {
     return (
       <div>
         <h2>Trending today</h2>
-      <MoviesApp />      
+      <MovieList />      
       </div>
 
   )
