@@ -27,14 +27,15 @@ const MovieCast = () => {
           {castMovie.map(({ id, name, profile_path, character }) => {
             if (profile_path) {
               return (
-                <li key={id} className={css.item}>
+                <li key={id} className={css.itemPhoto}>
                   <img
                     src={baseUrl + profile_path}
                     alt={name}
-                    className={css.img}
+                    className={css.photo}
                   />
-                  <p className="text"> {name}</p>
-                  <p>Character: {character}</p>
+                 <p className="text">{name}</p>
+                  <p>Character: {character}</p>  
+
                 </li>
               );
             }

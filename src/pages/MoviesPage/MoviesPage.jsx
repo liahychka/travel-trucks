@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import SearchMovie from '../../components/SearchMovie/SearchMovie';
 
 

@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from 'formik'
 import React from 'react'
+import css from './SearchMovie.module.css'
 
 const SearchMovie = ({handeChangeQuery}) => {
     const initialValues = {
@@ -7,7 +8,7 @@ const SearchMovie = ({handeChangeQuery}) => {
     };
     const handleSubmit = values => {
         console.log(values);
-        handeChangeQuery(values.query)
+        handeChangeQuery(values.query);
     };
 
 
@@ -15,7 +16,7 @@ const SearchMovie = ({handeChangeQuery}) => {
       <div>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
               <Form>
-                  <Field name='query' >                   
+                  <Field name='query' className={css.input} >                   
                   </Field>
                   <button type='submit'>Search</button>
             </Form>

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useParams, NavLink, Outlet } from 'react-router-dom';
 import { fetchMovieById } from '../../services/api';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -21,18 +22,34 @@ const MovieDetails = () => {
     }
     return (
         <div>
-            <h2>{movie ? movie.title : ''} ({movie.release_date.slice(0, 4)}) </h2>
-            {movie && <img src={movie.poster} alt={movie.title} />}
-            <p>User score: {movie ? movie.popularity : ''}</p>
-            <p>Overview: {movie ? movie.overview : ''}</p>
-            <p>Genres: {movie && movie.genres.length > 0 ? movie.genres.map(genre => genre.name).join(', ') : ''}</p>
+            <div className={css.boxPage}>
+            <div className={css.divPosterBtn}>
+            <button className={css.btn} >← Go back</button>
+            {movie && <img className={css.imgPoster} src={movie.poster} alt={movie.title} />} 
+            </div>
+
+            <div>
+                <h2>{movie ? movie.title : ''} ({movie.release_date.slice(0, 4)}) </h2>
+                <p>User score: {movie ? movie.popularity : ''}</p>
+                    <h3>Overview</h3>
+                    <p>{movie ? movie.overview : ''}</p>
+                    <h3>Genres</h3>    
+                    <p>{movie && movie.genres.length > 0 ? movie.genres.map(genre => genre.name).join(', ') : ''}</p>    
+            </div>                
+            </div>
+
+
             <hr />
             <p>Additional information</p>
             <div>
-                <NavLink to='cast' >Cast</NavLink>
-                <NavLink to='reviews' >Reviews</NavLink>                
+                <NavLink className={css.linkNav} to='cast' > <li>Cast</li> </NavLink>
+                <NavLink className={css.linkNav} to='reviews' > <li>Reviews </li></NavLink>                
             </div>
-            <Outlet />
+            <hr />
+            <Suspense>
+                <Outlet />
+            </Suspense>
+            
         </div>
     );
 }

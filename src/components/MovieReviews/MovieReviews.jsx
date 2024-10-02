@@ -27,7 +27,7 @@ const Reviews = () => {
                         if (author) {
                             return (
                                 <li key={id} className={css.item}>
-                                    <h2>{author}</h2>
+                                    <h3>Author: {author}</h3>
                                     <p className="text"> {content}</p>
                                 </li>
                             );
