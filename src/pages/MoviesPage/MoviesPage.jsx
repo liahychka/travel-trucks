@@ -11,7 +11,7 @@ const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const handeChangeQuery = newQuery => {
+  const handleChangeQuery = newQuery => {
     setSearchParams({query: newQuery})
   }
 
@@ -20,6 +20,8 @@ const MoviesPage = () => {
   useEffect(() => { 
     if (!searchQuery) return
     const getDeta = async () => {
+      setIsLoading(true)
+      setError(null)
           try {
             const data = await fetchSearch(searchQuery);
             setMovies(data.results)            
@@ -37,7 +39,7 @@ const MoviesPage = () => {
     <div>
         {isLoading && <p>Loading</p>}
         {error && <p>404</p>}
-      <SearchMovie handeChangeQuery={handeChangeQuery} />
+      <SearchMovie handleChangeQuery={handleChangeQuery} />
       {movies.length > 0 && <MovieList movies={movies} />}
     </div>
   )

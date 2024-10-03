@@ -2,16 +2,14 @@ import { Formik, Form, Field } from 'formik'
 import React from 'react'
 import css from './SearchMovie.module.css'
 
-const SearchMovie = ({handeChangeQuery}) => {
+const SearchMovie = ({handleChangeQuery}) => {
     const initialValues = {
         query: '',
     };
     const handleSubmit = values => {
         console.log(values);
-        handeChangeQuery(values.query);
+        handleChangeQuery(values.query);
     };
-
-  
 
   return (
       <div>

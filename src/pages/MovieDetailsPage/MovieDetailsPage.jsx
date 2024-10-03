@@ -1,9 +1,9 @@
 import { Suspense, useEffect, useState, useRef } from 'react';
 import { useParams, NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 import { fetchMovieById } from '../../services/api';
-import css from './MovieDetails.module.css';
+import css from './MovieDetailsPage.module.css';
 
-const MovieDetails = () => {
+const MovieDetailsPage = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const location = useLocation();
@@ -67,5 +67,5 @@ const MovieDetails = () => {
     );
 }
 
-export default MovieDetails;
+export default MovieDetailsPage;
 

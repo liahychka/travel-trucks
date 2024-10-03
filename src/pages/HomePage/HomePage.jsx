@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react'
 import MovieList from '../../components/MovieList/MovieList'
 import { fetchMovie } from '../../services/api';
 
-const Home = () => {
+const HomePage = () => {
 
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
-
 
   useEffect(() => {
     const getAllMovies = async () => {
@@ -36,4 +35,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

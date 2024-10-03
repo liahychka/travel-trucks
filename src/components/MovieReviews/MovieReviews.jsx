@@ -12,6 +12,8 @@ const Reviews = () => {
 
     useEffect(() => {
         const getReviews = async () => {
+                setIsLoading(true);
+                setError(null)
             try {
                 const data = await fetchMovieReviews(movieId);
                 setreviewsMovie(data);                
@@ -28,12 +30,12 @@ const Reviews = () => {
 
     if (reviewsMovie.length === 0) {
         return <p>There are no reviews yet</p>;
-        error && <p>404</p>
     } else {
         return (
             <div>
                 <ul className={css.list}>
                     {isLoading && <p>Loading</p>}
+                    {error && <p>404</p>}
                     {reviewsMovie.map(({ id, author, content }) => {
                         if (author) {
                             return (
