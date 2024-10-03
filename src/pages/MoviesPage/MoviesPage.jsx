@@ -8,6 +8,8 @@ import MovieList from '../../components/MovieList/MovieList';
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const handeChangeQuery = newQuery => {
     setSearchParams({query: newQuery})
@@ -15,11 +17,17 @@ const MoviesPage = () => {
 
   const searchQuery = searchParams.get("query")
 
-  useEffect(() => {
+  useEffect(() => { 
     if (!searchQuery) return
-        const getDeta = async () => {
-          const data = await fetchSearch(searchQuery);
-          setMovies(data.results)
+    const getDeta = async () => {
+          try {
+            const data = await fetchSearch(searchQuery);
+            setMovies(data.results)            
+          } catch (error) {
+          setError(error)
+        } finally {
+          setIsLoading(false);
+        }
         };
 
         getDeta();
@@ -27,6 +35,8 @@ const MoviesPage = () => {
 
   return (
     <div>
+        {isLoading && <p>Loading</p>}
+        {error && <p>404</p>}
       <SearchMovie handeChangeQuery={handeChangeQuery} />
       {movies.length > 0 && <MovieList movies={movies} />}
     </div>

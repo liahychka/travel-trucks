@@ -5,14 +5,23 @@ import css from './MovieCast.module.css';
 
 const MovieCast = () => {
     const { movieId } = useParams();
-    const [castMovie, setcastMovie] = useState([]);
+  const [castMovie, setcastMovie] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
     useEffect(() => {
-        const getCast = async () => {
-            const data = await fetchMovieCast(movieId);
-          setcastMovie(data);
+      const getCast = async () => {
+              setIsLoading(true);
+              setError(null)
+          try {
+              const data = await fetchMovieCast(movieId);
+              setcastMovie(data);           
+          } catch (error) {
+              setError(error)
+          } finally {
+            setIsLoading(false);
+          }
         };
-
         getCast();
     }, [movieId]);
 
@@ -24,9 +33,11 @@ const MovieCast = () => {
     return (
       <>
         <ul className={css.list}>
+                  {isLoading && <p>Loading</p>}
+                  {error && <p>404</p>}
           {castMovie.map(({ id, name, profile_path, character }) => {
-              return (
-                <li key={id} className={css.itemPhoto}>
+            return (
+                    <li key={id} className={css.itemPhoto}>
                   <img
                     src={profile_path ? baseUrl + profile_path : null}
                     alt={name}
@@ -36,6 +47,7 @@ const MovieCast = () => {
                   <p>Character: {character}</p>  
 
                 </li>
+
               );
             
           })}

@@ -8,12 +8,21 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const location = useLocation();
     const back = useRef(location?.state ?? "/");
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const getDetails = async () => {
-            const data = await fetchMovieById(movieId);
-            data.poster = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
-            setMovie(data);
+            try {
+                const data = await fetchMovieById(movieId);
+                data.poster = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
+                setMovie(data);                
+            } catch (error) {
+                setError(error)
+            } finally {
+                setIsLoading(false);
+            }
+
         };
 
         getDetails();
@@ -24,6 +33,8 @@ const MovieDetails = () => {
     }
     return (
         <div>
+        {isLoading && <p>Loading</p>}
+        {error && <p>404</p>}
             <div className={css.boxPage}>
             <div className={css.divPosterBtn}>
             <Link className={css.btn} to={back.current} >← Go back</Link>
