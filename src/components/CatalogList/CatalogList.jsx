@@ -1,4 +1,5 @@
 import CatalogItem from "../CatalogItem/CatalogItem.jsx";
+import FeaturesCampers from "../FeaturesCampers/FeaturesCampers.jsx";
 
 const CatalogList = ({ campers }) => {
   return (
@@ -10,7 +11,7 @@ const CatalogList = ({ campers }) => {
             name={camper.name}
             location={camper.location}
             price={camper.price}
-            // Можна додавати інші дані, якщо вони потрібні
+            
           />
         ))}
       </ul>
