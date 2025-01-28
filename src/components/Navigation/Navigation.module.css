@@ -1,8 +1,37 @@
-.Link {
-    padding: 20px 12px 20px 12px;
-    text-decoration: none; 
+.header {
+    width: 1440px;
+    height: 72px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #f7f7f7;
 }
 
-.Link:hover {
-    text-decoration: underline; 
+.link {
+    text-decoration: none; 
+    font: 500 16px / 1.5 "Inter", sans-serif;
+    text-align: center;
+    color: #101828;
+    margin-left: 32px;
+}
+
+.link:hover {
+    color: #e44848;
+}
+
+.logo {
+    text-decoration: none;
+    font: 500 20px / 1.5 "Inter", sans-serif;
+    text-align: center;
+    color: #101828;
+    font-weight: bold;
+    margin-left: 64px;
+    margin-right: 450px;
+}
+
+.spanLogo {
+    font: 500 20px / 1.5 "Inter", sans-serif;
+    text-align: center;
+    color: #475467;
+    font-weight: bold;
 }

@@ -3,10 +3,13 @@ import css from './Navigation.module.css'
 
 const Navigation = () => {
   return (
-    <div>
-          <NavLink to='/' className={css.Link} >Home</NavLink>
-          <NavLink to='/movies' className={css.Link} >Movies</NavLink>
-      <hr />
+    <div className={css.header}>
+      <NavLink to='/' className={css.logo}>Travel<span className={css.spanLogo}>Trucks</span></NavLink>
+      <div>
+          <NavLink to='/' className={css.link}>Home</NavLink>
+          <NavLink to='/catalog' className={css.link}>Catalog</NavLink>
+      </div>
+
     </div>
     
   )
