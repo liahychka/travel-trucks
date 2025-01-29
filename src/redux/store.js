@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { campersReducer } from "./campers/slice";
+import { campersReducer } from "./campers/slice.js";
 
 // Конфіг для campersReducer
 const campersPersistConfig = {
@@ -23,8 +23,7 @@ const campersPersistConfig = {
 export const store = configureStore({
   reducer: {
     campers: persistReducer(campersPersistConfig, campersReducer), // Зберігаємо campers
-    // filters: filterReducer, // Додати, якщо потрібно
-    // auth: persistReducer(authPersistConfig, authSlice), // Адаптувати для авторизації
+    // filters: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

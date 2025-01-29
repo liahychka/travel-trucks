@@ -7,7 +7,7 @@ const CatalogList = ({ campers }) => {
   
   return (
     <div>
-<ul>
+      <ul>
         {campers.map((camper) => (
           <li key={camper.id}>
             <CatalogItem
@@ -22,6 +22,8 @@ const CatalogList = ({ campers }) => {
               engine={camper.engine}
               kitchen={camper.kitchen ? "kitchen" : null}
               AC={camper.AC ? "AC" : null}
+              bathroom={camper.bathroom ? "bathroom" : null}
+              TV={camper.TV ? "TV" : null}
             />
             <NavLink to='/catalog/:${id}' className={css.btnShowMore}>Show More</NavLink>
           </li>
