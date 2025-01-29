@@ -22,7 +22,8 @@
     "react-router-dom": "^6.26.2",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
-    "toast": "^0.5.4"
+    "toast": "^0.5.4",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

@@ -3,6 +3,7 @@ import { selectCampers, selectError, selectLoading } from "../../redux/campers/s
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campers/operations.js";
 import CatalogList from "../../components/CatalogList/CatalogList.jsx";
+import FilterComponent from "../../components/FilterComponent/FilterComponent.jsx";
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Catalog = () => {
 
   return (
     <div>
+      <FilterComponent/>
       {isLoading && <h2>Loading...</h2>}
       {IsError && <h2>Error...</h2>}
       {campers.items && campers.items.length ? (

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import css from './Navigation.module.css'
+import css from './NavigationHeader.module.css'
 
-const Navigation = () => {
+const NavigationHeader = () => {
   return (
     <div className={css.header}>
       <NavLink to='/' className={css.logo}>Travel<span className={css.spanLogo}>Trucks</span></NavLink>
@@ -15,4 +15,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default NavigationHeader

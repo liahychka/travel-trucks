@@ -1,7 +1,7 @@
 const CatalogItem = ({ name, location, price, rating, description, gallery }) => {
   return (
     <div>
-      <h2>{name}</h2>
+      <h3>{name}</h3>
       <p>{location}</p>
       <p>{rating}</p>
       <h3>€{price}</h3>

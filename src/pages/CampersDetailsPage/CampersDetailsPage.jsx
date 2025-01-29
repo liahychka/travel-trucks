@@ -5,6 +5,8 @@ import FeaturesCampers from "../../components/FeaturesCampers/FeaturesCampers";
 import { useSelector } from "react-redux";
 import { selectCamperById } from "../../redux/campers/selectors.js";
 import FormBooking from "../../components/FormBooking/FormBooking.jsx";
+import ReviewsCampers from "../../components/ReviewsCampers/ReviewsCampers.jsx";
+import NavigationDetails from "../../components/NavigationDetails/NavigationDetails.jsx";
 
 const CampersDetailsPage = () => {
   const { id } = useParams();
@@ -16,7 +18,8 @@ const CampersDetailsPage = () => {
   }
 
   return (
-    <div className={css.detailsContainer}>
+      <div className={css.detailsContainer}>
+        <div>
       <CatalogItem
         name={camper.name}
         rating={camper.rating}
@@ -24,11 +27,9 @@ const CampersDetailsPage = () => {
         price={camper.price}
         description={camper.description}
         gallery={camper.gallery}
-      />
-
-          <div>
-        <h4>Features</h4>
-        <FeaturesCampers
+              />
+        <NavigationDetails/>
+              <FeaturesCampers
             transmission={camper.transmission}
             engine={camper.engine}
             kitchen={camper.kitchen ? "kitchen" : null}
@@ -45,9 +46,18 @@ const CampersDetailsPage = () => {
             height={camper.height}
             width={camper.width}
             length={camper.length}
-            form={camper.form}
-        />
-        <FormBooking/>
+            form={camper.form}/>
+              
+        {camper.reviews.map((review, index) => (
+            <ReviewsCampers
+            key={index}
+            reviewer_name={review.reviewer_name}
+            reviewer_rating={review.reviewer_rating}
+            comment={review.comment}
+            />
+        ))}
+              
+        <FormBooking />
 
       </div>
     </div>
