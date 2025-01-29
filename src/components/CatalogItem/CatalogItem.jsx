@@ -1,17 +1,17 @@
-const CatalogItem = ({ name, location, rating, price, description, gallery }) => {
+const CatalogItem = ({ name, location, price, rating, description, gallery }) => {
   return (
-    <li>
+    <div>
       <h2>{name}</h2>
       <p>{location}</p>
       <p>{rating}</p>
-      <h2>€{price}</h2>
+      <h3>€{price}</h3>
       <p>{description}</p>
       <div>
         {gallery && gallery.map((image, index) => (
           <img key={index} src={image.original} alt={`${name} image ${index + 1}`} />
         ))}
       </div>
-    </li>
+    </div>
   );
 };
 
