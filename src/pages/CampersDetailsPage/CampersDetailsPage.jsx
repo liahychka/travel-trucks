@@ -4,6 +4,7 @@ import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import FeaturesCampers from "../../components/FeaturesCampers/FeaturesCampers";
 import { useSelector } from "react-redux";
 import { selectCamperById } from "../../redux/campers/selectors.js";
+import FormBooking from "../../components/FormBooking/FormBooking.jsx";
 
 const CampersDetailsPage = () => {
   const { id } = useParams();
@@ -39,13 +40,15 @@ const CampersDetailsPage = () => {
             radio={camper.radio ? "radio" : null}
             TV={camper.TV ? "TV" : null}
             bathroom={camper.bathroom ? "bathroom" : null}
-                  consumption={camper.consumption}
-                  tank={camper.tank}
-                  height={camper.height}
-                  width={camper.width}
-                  length={camper.length}
-                  form={camper.form}
+            consumption={camper.consumption}
+            tank={camper.tank}
+            height={camper.height}
+            width={camper.width}
+            length={camper.length}
+            form={camper.form}
         />
+        <FormBooking/>
+
       </div>
     </div>
   );

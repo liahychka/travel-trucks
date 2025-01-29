@@ -1,6 +1,9 @@
+import css from "./FeaturesCampers.module.css"
+
 const FeaturesCampers = ({
   form, length, width, height, tank, consumption, water, gas, microwave, refrigerator, radio, TV, kitchen, bathroom, AC, engine, transmission
 }) => {
+
   return (
     <div>
       <ul>
