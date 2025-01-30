@@ -1,32 +1,31 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setFilters } from "../../redux/campers/slice";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import css from './FilterComponent.module.css';
 import icons from '../icons/icons.svg';
-import { useState } from "react";
+import { fetchCampersWithFilters } from "../../redux/campers/operations.js";
 
 const FilterComponent = () => {
   const dispatch = useDispatch();
 
-  const [filters, setLocalFilters] = useState({
-    location: '',
-    vehicleType: '',
-    hasAC: false,
-    hasKitchen: false,
-    hasTV: false,
-    hasBathroom: false,
-    isAutomatic: false,
-    isAlcove: false,
+  const [location, setLocation] = useState("");
+  const [equipment, setEquipment] = useState({
+    ac: false,
+    kitchen: false,
+    tv: false,
+    bathroom: false,
+    automatic: false
   });
+  const [vehicleType, setVehicleType] = useState("");
 
-  const handleFilterChange = (filterType, value) => {
-    setLocalFilters(prevFilters => ({
-      ...prevFilters,
-      [filterType]: value,
-    }));
+  const handleLocationChange = (e) => setLocation(e.target.value);
+  const handleEquipmentChange = (e) => {
+    const { name, checked } = e.target;
+    setEquipment((prev) => ({ ...prev, [name]: checked }));
   };
+  const handleVehicleTypeChange = (e) => setVehicleType(e.target.value);
 
-  const applyFilters = () => {
-    dispatch(setFilters(filters)); 
+  const handleSearch = () => {
+    dispatch(fetchCampersWithFilters({ location, equipment, vehicleType }));
   };
 
   return (
@@ -37,8 +36,8 @@ const FilterComponent = () => {
         <label>Location</label>
         <input 
           type="text" 
-          value={filters.location}
-          onChange={(e) => handleFilterChange('location', e.target.value)} 
+          value={location}
+          onChange={handleLocationChange}
           placeholder="Search by location"
         />
       </div>
@@ -48,8 +47,9 @@ const FilterComponent = () => {
         <li>
           <input 
             type="checkbox" 
-            checked={filters.hasAC}
-            onChange={(e) => handleFilterChange('hasAC', e.target.checked)} 
+            name="ac"
+            checked={equipment.ac}
+            onChange={handleEquipmentChange}
           />
           <svg width="32" height="32">
             <use href={`${icons}#icon-ac`} />
@@ -58,8 +58,9 @@ const FilterComponent = () => {
         <li>
           <input 
             type="checkbox" 
-            checked={filters.hasKitchen}
-            onChange={(e) => handleFilterChange('hasKitchen', e.target.checked)} 
+            name="kitchen"
+            checked={equipment.kitchen}
+            onChange={handleEquipmentChange} 
           />
           <svg width="32" height="32">
             <use href={`${icons}#icon-kitchen`} />
@@ -68,8 +69,9 @@ const FilterComponent = () => {
         <li>
           <input 
             type="checkbox" 
-            checked={filters.hasTV}
-            onChange={(e) => handleFilterChange('hasTV', e.target.checked)} 
+            name="tv"
+            checked={equipment.tv}
+            onChange={handleEquipmentChange} 
           />
           <svg width="32" height="32">
             <use href={`${icons}#icon-tv`} />
@@ -78,8 +80,9 @@ const FilterComponent = () => {
         <li>
           <input 
             type="checkbox" 
-            checked={filters.hasBathroom}
-            onChange={(e) => handleFilterChange('hasBathroom', e.target.checked)} 
+            name="bathroom"
+            checked={equipment.bathroom}
+            onChange={handleEquipmentChange} 
           />
           <svg width="32" height="32">
             <use href={`${icons}#icon-bathroom`} />
@@ -88,8 +91,9 @@ const FilterComponent = () => {
               <li>
           <input 
             type="checkbox" 
-            checked={filters.isAutomatic}
-            onChange={(e) => handleFilterChange('isAutomatic', e.target.checked)} 
+            name="automatic"
+            checked={equipment.automatic}
+            onChange={handleEquipmentChange} 
           />
         <svg width="32" height="32">
             <use href={`${icons}#icon-automatic`} />
@@ -103,9 +107,9 @@ const FilterComponent = () => {
           <input 
             type="radio" 
             name="vehicleType" 
-            value="van" 
-            checked={filters.vehicleType === 'van'}
-            onChange={() => handleFilterChange('vehicleType', 'van')} 
+            value="panelTruck" 
+            checked={vehicleType === "panelTruck"}
+            onChange={handleVehicleTypeChange}
           />
           <svg width="32" height="32">
             <use href={`${icons}#icon-van`} />
@@ -115,29 +119,29 @@ const FilterComponent = () => {
           <input 
             type="radio" 
             name="vehicleType" 
-            value="fullyIntegrated" 
-            checked={filters.vehicleType === 'fullyIntegrated'}
-            onChange={() => handleFilterChange('vehicleType', 'fullyIntegrated')} 
+            value="alcove" 
+            checked={vehicleType === "alcove"}
+            onChange={handleVehicleTypeChange}
           />
           <svg width="32" height="32">
-            <use href={`${icons}#icon-fullyIntegrated`} />
+            <use href={`${icons}#icon-alcove`} />
           </svg>
-              </li>
+        </li>
         <li>
           <input 
             type="radio" 
             name="vehicleType" 
-            value="alcove" 
-            checked={filters.vehicleType === 'alcove'}
-            onChange={() => handleFilterChange('vehicleType', 'alcove')} 
+            value="fullyIntegrated" 
+            checked={vehicleType === "fullyIntegrated"}
+            onChange={handleVehicleTypeChange}
           />
-        <svg width="32" height="32">
-            <use href={`${icons}#icon-alcove`} />
+          <svg width="32" height="32">
+            <use href={`${icons}#icon-fullyIntegrated`} />
           </svg>
         </li>
       </ul>
 
-      <button onClick={applyFilters}>Search</button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };

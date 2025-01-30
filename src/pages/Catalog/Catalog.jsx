@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCampers, selectError, selectLoading } from "../../redux/campers/selectors.js";
 import { useEffect } from "react";
-import { fetchCampers } from "../../redux/campers/operations.js";
+import { fetchCampersWithFilters } from "../../redux/campers/operations.js";
 import CatalogList from "../../components/CatalogList/CatalogList.jsx";
 import FilterComponent from "../../components/FilterComponent/FilterComponent.jsx";
 import css from "./Catalog.module.css";
@@ -13,7 +13,7 @@ const Catalog = () => {
   const isError = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchCampers());
+    dispatch(fetchCampersWithFilters({ location: "", equipment: {}, vehicleType: "" }));
   }, [dispatch]);
 
   return (
