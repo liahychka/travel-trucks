@@ -1,0 +1,15 @@
+.heart {
+    width: 24px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.heart:hover,
+.heart:focus,
+.heart:active {
+    fill: #e44848;
+}
+
+.heart.filled {
+    fill: #e44848;
+}
