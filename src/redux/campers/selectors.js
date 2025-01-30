@@ -1,13 +1,15 @@
 export const selectCamperById = (state, id) => {
-  return state.campers.items.items.find((camper) => camper.id === id);
+  return state.campers.items?.items?.find((camper) => camper.id === id) || null;
 };
 
 export const selectCampers = (state) => {
   const { items, filters } = state.campers;
 
+  if (!items || !items.items) return { total: 0, items: [] }; // Перевірка на наявність даних
+
   const filteredItems = items.items.filter((item) => {
     return (
-      (!filters.location || item.location.includes(filters.location)) &&
+      (!filters.location || item.location?.includes(filters.location)) &&
       (!filters.vehicleType || item.form === filters.vehicleType) &&
       (filters.hasAC ? item.AC : true) &&
       (filters.hasKitchen ? item.kitchen : true) &&
