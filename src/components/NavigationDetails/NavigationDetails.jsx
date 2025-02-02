@@ -4,6 +4,7 @@ import ReviewsCampers from "../ReviewsCampers/ReviewsCampers";
 import { selectCamperById } from "../../redux/campers/selectors";
 import { useParams } from "react-router-dom";
 import FeaturesCampers from "../FeaturesCampers/FeaturesCampers";
+import css from "./NavigationDetails.module.css"
 
 const NavigationDetails = () => {
   const { id } = useParams();
@@ -17,11 +18,11 @@ const NavigationDetails = () => {
 
   return (
     <div>
-      <ul>
-        <li onClick={() => setActiveTab("features")}>
+      <ul className={css.listlink}>
+        <li onClick={() => setActiveTab("features")} className={css.linkActive}>
           Features
         </li>
-        <li onClick={() => setActiveTab("reviews")}>
+        <li onClick={() => setActiveTab("reviews")} className={css.linkActive}>
           Reviews
         </li>
       </ul>

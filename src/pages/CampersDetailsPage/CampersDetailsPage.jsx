@@ -26,9 +26,12 @@ const CampersDetailsPage = () => {
           price={camper.price}
           description={camper.description}
           gallery={camper.gallery}
-        />
-        <NavigationDetails />
-        <FormBooking />
+              />
+              <div className={css.ou}>
+        <NavigationDetails/>
+        <FormBooking />                  
+              </div>
+
       </div>
     </div>
   );

@@ -3,6 +3,13 @@
     gap: 16px;
 }
 
+.price {
+    margin-bottom: 28px;
+    margin-top: 16px;
+    font: 600 24px / 1.33333 "Inter", sans-serif;
+    color: #101828;
+}
+
 .imageDetails {
     border-radius: 10px;
     width: 292px;
@@ -13,4 +20,18 @@
 .boxImage {
     display: flex;
     gap: 48px;
+}
+
+.name {
+    font: 600 24px / 1.33333 "Inter", sans-serif;
+    color: #101828;
+    margin-top: 48px;
+    margin-bottom: 8px;
+}
+
+.description {
+    margin-top: 28px;
+    margin-bottom: 60px;
+    font: 400 16px / 1.5 "Inter", sans-serif;
+    color: #475467;
 }

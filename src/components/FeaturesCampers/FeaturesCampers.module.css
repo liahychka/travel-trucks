@@ -1,4 +1,7 @@
 .boxforFeatures {
     display: flex;
     gap: 8px;
+    background-color: #f7f7f7;
 }
+
+
