@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectCamperById } from "../../redux/campers/selectors.js";
 import FormBooking from "../../components/FormBooking/FormBooking.jsx";
 import NavigationDetails from "../../components/NavigationDetails/NavigationDetails.jsx";
+import CatalogItemDetails from "../../components/CatalogItemDetails/CatalogItemDetails.jsx";
 
 const CampersDetailsPage = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const CampersDetailsPage = () => {
   return (
     <div className={css.detailsContainer}>
       <div>
-        <CatalogItem
+        <CatalogItemDetails
           name={camper.name}
           rating={camper.rating}
           location={camper.location}

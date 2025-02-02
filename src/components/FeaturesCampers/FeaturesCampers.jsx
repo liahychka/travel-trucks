@@ -7,7 +7,7 @@ const FeaturesCampers = ({
   return (
     <div>
       <ul>
-        <li>
+        <li className={css.boxforFeatures}>
           <p>{water}</p>
           <p>{gas}</p>
           <p>{microwave}</p>

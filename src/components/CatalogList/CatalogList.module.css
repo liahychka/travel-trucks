@@ -1,15 +1,12 @@
-.heart {
-    width: 24px;
-    height: 28px;
-    cursor: pointer;
+/* .box {
+    display: flex;
+} */
+
+.box1 {
+    display: flex;
 }
 
-.heart:hover,
-.heart:focus,
-.heart:active {
-    fill: #e44848;
-}
-
-.heart.filled {
-    fill: #e44848;
+.boxForItemBtn {
+    display: flex;
+    flex-direction: column;
 }

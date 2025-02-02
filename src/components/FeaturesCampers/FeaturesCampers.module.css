@@ -1,5 +1,4 @@
-.photo {
-    width: 100px;
-    list-style-type: none;
+.boxforFeatures {
+    display: flex;
+    gap: 8px;
 }
-

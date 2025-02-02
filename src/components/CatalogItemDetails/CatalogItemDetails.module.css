@@ -1,0 +1,16 @@
+.ratingLocation {
+    display: flex;
+    gap: 16px;
+}
+
+.imageDetails {
+    border-radius: 10px;
+    width: 292px;
+    height: 312px;
+    object-fit: cover;
+}
+
+.boxImage {
+    display: flex;
+    gap: 48px;
+}
