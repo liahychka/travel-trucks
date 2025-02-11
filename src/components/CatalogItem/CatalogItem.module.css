@@ -86,10 +86,6 @@
     min-width: 888px;
 }
 
-.catalogItem {
-
-}
-
 .star {
     height: 16px;
     width: 16px;
@@ -127,6 +123,22 @@
     color: #fff;
 }
 
+.btnShowMore:hover, 
+.btnShowMore:focus {
+    background: #d84343;
+}
+
 .catalogItem {
     width: 525px;
+}
+
+.iconBox {
+    border-radius: 100px;
+    padding: 12px 18px;
+    max-width: 143px;
+    max-height: 48px;
+    background: #f2f4f7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }

@@ -12,7 +12,7 @@ const truncateText = (text, limit) => {
 const CatalogItem = (props) => {
   const { favorites, toggleFavorite } = useFavorites();
   const { id, name, location, price, rating, description = '', gallery, transmission,
-    engine, kitchen, AC, bathroom, TV
+    engine, kitchen, AC
    } = props;
 
   return (
@@ -53,46 +53,35 @@ const CatalogItem = (props) => {
             </div>
             <p className={css.description}>{truncateText(description, 10)}</p> 
             <div className={css.boxFeatures}>
-              {TV && ( 
-                <p> 
-              <svg className={css.iconStyles}>
-                <use href={`${icons}#icon-tv`} />
-              </svg>
-                {TV}
-              </p>)}
               {kitchen && (
-                <p>
+                <p className={css.iconBox}>
                   <svg className={css.iconStyles}>
                     <use href={`${icons}#icon-kitchen`} />
                   </svg>                
                   {kitchen}
                 </p>
               )}
-            {bathroom && (           
-              <p>
-              <svg className={css.iconStyles}>
-                <use href={`${icons}#icon-bathroom`} />
-              </svg>   
-                {bathroom}
-                </p>)}
             {AC && (           
-              <p>
+              <p className={css.iconBox}>
               <svg className={css.iconStyles}>
                 <use href={`${icons}#icon-ac`} />
               </svg>   
                 {AC}
               </p>)}
             {engine && (           
-              <p>
+              <p className={css.iconBox}>
               <svg className={css.iconStyles}>
-                <use href={`${icons}#icon-ac`} />
+                <use href={`${icons}#icon-petrol`} />
               </svg>   
                 {engine}
-              </p>)}
-              <p>
-                
+                </p>)}
+            {transmission && (           
+              <p className={css.iconBox}>
+              <svg className={css.iconStyles}>
+                <use href={`${icons}#icon-automatic`} />
+              </svg>   
                 {transmission}
-              </p>                   
+              </p>)}                
             </div>
             <div>
         <NavLink to={`/catalog/${id}`} className={css.btnShowMore}>

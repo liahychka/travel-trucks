@@ -19,7 +19,7 @@ const Catalog = () => {
   return (
     <div className={css.catalog}>
       <FilterComponent />
-      {isLoading && <h2>Loading...</h2>}
+      {isLoading && null}
       {isError && <h2>Error...</h2>}
       {campers.items && campers.items.length ? (
         <CatalogList campers={campers} />

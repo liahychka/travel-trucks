@@ -23,9 +23,7 @@ const CatalogList = ({ campers }) => {
             <div className={css.boxForItemBtn}>
               <CatalogItem {...camper}
               kitchen={camper.kitchen ? "kitchen" : null}
-              AC={camper.AC ? "AC" : null} 
-              bathroom={camper.bathroom ? "bathroom" : null}
-              TV={camper.TV ? "TV" : null}/>
+              AC={camper.AC ? "AC" : null}/>
             </div>
           </li>
         ))}

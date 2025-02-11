@@ -180,7 +180,7 @@ const FilterComponent = () => {
             </label>
         </li>
         </ul>
-      <button onClick={handleSearch}>Search</button>
+      <button className={css.btnSearch} onClick={handleSearch} type="button" >Search</button>
     </div>
   );
 };
