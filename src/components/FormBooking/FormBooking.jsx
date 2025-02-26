@@ -29,7 +29,8 @@ const DateInput = ({ field, form }) => {
       selected={field.value}
       onChange={(date) => form.setFieldValue(field.name, date)}
         dateFormat="dd/MM/YYYY"
-        placeholderText="Booking date*"
+      placeholderText="Booking date*"
+      className={css.inputBooking}
     />
   );
 };
@@ -44,26 +45,26 @@ const initialValues = {
 
   return (
       <>
-          <div>
-              <h3>Book your campervan now</h3>
-              <p>Stay connected! We are always ready to help you.</p>
+          <div className={css.boxForm}>
+              <h3 className={css.title}>Book your campervan now</h3>
+              <p className={css.text}>Stay connected! We are always ready to help you.</p>
             <Formik initialValues={initialValues}
                   onSubmit={(values) => console.log(values)}
               validationSchema={validationSchema}>
-            <Form>
-                <label>
+            <Form className={css.formList}>
+                <label className={css.labelInput}>
                     <Field className={css.inputBooking} type="text" name="name" placeholder="Name*" />     
                 </label>
-                <label>
+                <label className={css.labelInput}>
                     <Field className={css.inputBooking} type="email" name="email" placeholder="Email*"/>   
                 </label>
-                <label>
+                <label className={css.labelInput}>
                 <Field name="date" component={DateInput} />
                 </label> 
-                <label>
-                    <Field className={css.inputBooking} type="text" name="coment" placeholder="Coment" />     
+                <label className={css.labelInput}>
+                    <Field className={css.inputBookingComment} type="text" name="coment" placeholder="Comment" />     
                 </label>
-                    <button type="submit">Send</button>
+                    <button type="submit" className={css.btnSend}>Send</button>
                 </Form>
             </Formik>      
         </div>

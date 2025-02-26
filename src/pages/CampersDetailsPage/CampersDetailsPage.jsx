@@ -31,7 +31,6 @@ const CampersDetailsPage = () => {
         <NavigationDetails/>
         <FormBooking />                  
               </div>
-
       </div>
     </div>
   );
