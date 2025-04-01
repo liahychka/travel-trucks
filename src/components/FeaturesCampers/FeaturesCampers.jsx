@@ -4,7 +4,7 @@ import icons from '../icons/icons.svg';
 const FeaturesCampers = ({
   form, length, width, height, tank, consumption, water, gas, microwave, refrigerator, radio, TV, kitchen, bathroom, AC, engine, transmission
 }) => {
-
+  
   return (
     <div className={css.boxforFeatures}>
       <ul>
@@ -15,7 +15,6 @@ const FeaturesCampers = ({
         </svg>            
             {water}</p>
           <p>
-          
             {gas}</p>
           <p>
           <svg width="32" height="32">
@@ -23,10 +22,12 @@ const FeaturesCampers = ({
         </svg>               
             {microwave}</p>
           <p>
-          <svg width="32" height="32">
-        <use href={`${icons}#icon-refrigerator`} />
-        </svg>                  
-            {refrigerator}</p>
+          {refrigerator && (
+            <svg width="32" height="32">
+              <use href={`${icons}#icon-refrigerator`} />
+            </svg>
+          )}
+          </p>
           <p>
           <svg width="32" height="32">
         <use href={`${icons}#icon-radio`} />
@@ -53,14 +54,25 @@ const FeaturesCampers = ({
         <use href={`${icons}#icon-ac`} />
         </svg>      
             {AC}</p> 
-          <p>{engine}</p>
-          <p>{transmission}</p>
-          <p>{consumption}</p>
-          <p>{tank}</p>
-          <p>{height}</p>
-          <p>{width}</p>
-          <p>{length}</p>
-          <p>{form}</p>
+          <p>
+            <svg width="32" height="32">
+        <use href={`${icons}#icon-petrol`} />
+        </svg>      
+            {engine}</p>
+          <p>
+            <svg width="32" height="32">
+        <use href={`${icons}#icon-automatic`} />
+        </svg>      
+            {transmission}</p>        
+        </li> 
+        <li>
+          <h3>Vehicle details</h3>
+          <p>Form {form}</p>
+          <p>Consumption {consumption}</p>
+          <p>Tank {tank}</p>
+          <p>Length {height}</p>
+          <p>Width {width}</p>
+          <p>Length {length}</p>          
         </li>
       </ul>
     </div>

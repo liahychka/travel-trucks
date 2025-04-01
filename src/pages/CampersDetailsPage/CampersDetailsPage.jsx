@@ -1,9 +1,7 @@
 import css from "./CampersDetailsPage.module.css";
 import { useParams } from "react-router-dom";
-import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import { useSelector } from "react-redux";
 import { selectCamperById } from "../../redux/campers/selectors.js";
-import FormBooking from "../../components/FormBooking/FormBooking.jsx";
 import NavigationDetails from "../../components/NavigationDetails/NavigationDetails.jsx";
 import CatalogItemDetails from "../../components/CatalogItemDetails/CatalogItemDetails.jsx";
 
@@ -29,8 +27,7 @@ const CampersDetailsPage = () => {
               />
               <div className={css.ou}>
         <NavigationDetails/>
-        <FormBooking />                  
-              </div>
+      </div>
       </div>
     </div>
   );

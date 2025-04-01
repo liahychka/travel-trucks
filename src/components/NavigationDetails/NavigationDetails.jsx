@@ -5,6 +5,7 @@ import { selectCamperById } from "../../redux/campers/selectors";
 import { useParams } from "react-router-dom";
 import FeaturesCampers from "../FeaturesCampers/FeaturesCampers";
 import css from "./NavigationDetails.module.css"
+import FormBooking from "../FormBooking/FormBooking";
 
 const NavigationDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const NavigationDetails = () => {
     return <h2>Camper not found</h2>;
   }
 
+  
   return (
     <div>
       <ul className={css.listlink}>
@@ -58,11 +60,13 @@ const NavigationDetails = () => {
               reviewer_rating={review.reviewer_rating}
               comment={review.comment}
             />
-          ))}
+          ))}                 
         </div>
       )}
+       <FormBooking /> 
     </div>
   );
+ 
 };
 
 export default NavigationDetails;
