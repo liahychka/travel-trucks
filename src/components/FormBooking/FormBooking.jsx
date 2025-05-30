@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from "yup";
 
 const FormBooking = () => {
-
+  
 const validationSchema = Yup.object({
   name: Yup.string()
     .min(2, "Minimum 2 characters")
@@ -44,7 +44,8 @@ const initialValues = {
   };
 
   return (
-      <>
+    <>
+      
           <div className={css.boxForm}>
               <h3 className={css.title}>Book your campervan now</h3>
               <p className={css.text}>Stay connected! We are always ready to help you.</p>

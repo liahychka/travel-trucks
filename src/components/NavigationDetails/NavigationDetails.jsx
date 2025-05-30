@@ -28,8 +28,8 @@ const NavigationDetails = () => {
           Reviews
         </li>
       </ul>
-
-      {activeTab === "features" && (
+      <div className={css.boxDetails}>
+            {activeTab === "features" && (
         <FeaturesCampers
           transmission={camper.transmission}
           engine={camper.engine}
@@ -63,7 +63,9 @@ const NavigationDetails = () => {
           ))}                 
         </div>
       )}
-       <FormBooking /> 
+       <FormBooking />   
+    </div>
+
     </div>
   );
  

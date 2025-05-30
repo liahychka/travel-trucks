@@ -1,0 +1,47 @@
+.wordNameBox {
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+    background: #f2f4f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wordName {
+    font: 600 24px / 1.33333 "Inter", sans-serif;
+    color: #e44848;
+}
+
+.itemReviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.boxReviews {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.iconStar {
+    width: 16px;
+    height: 15px;
+}
+
+.itemReviews {
+    width: 631px;
+    margin-bottom: 44px;
+}
+
+.stars {
+    margin-top: 4px;
+}
+
+.boxNameStars {
+    margin-left: 16px;
+}
+
+.list {
+    padding: 44px;
+}
