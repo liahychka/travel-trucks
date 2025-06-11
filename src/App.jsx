@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from 'react';
 import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import { FavoritesProvider } from "./FavoritesContext/FavoritesContext.jsx";
+import Layout from "./components/Layout/Layout.jsx";
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
@@ -13,9 +14,10 @@ const FeaturesCampers = lazy(() => import('./components/FeaturesCampers/Features
 const App = () => {
   return (
     <div>
-          <FavoritesProvider>
-
-      <NavigationHeader />
+      <FavoritesProvider>
+          <NavigationHeader />
+    <Layout>  
+          
       <Suspense fallback={ <h2>Loading by suspense</h2> } >
         <Routes>
         <Route path="/" element={<HomePage />}/>
@@ -26,8 +28,10 @@ const App = () => {
         </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Suspense>
+          </Suspense>
+     </Layout>     
     </FavoritesProvider>
+    
 
     </div>
   )

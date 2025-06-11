@@ -2,7 +2,8 @@ import css from './CatalogItemDetails.module.css'
 
 const CatalogItemDetails = ({ name, location, price, rating, description, gallery }) => {
   return (
-      <div>
+    <div>
+      <div className={css.boxItemDetails}>
             <h3 className={css.name}>{name}</h3>
             <div className={css.ratingLocation}>
             <p>{rating}</p>    
@@ -25,7 +26,9 @@ const CatalogItemDetails = ({ name, location, price, rating, description, galler
           </div>
             <p className={css.description}>{description}</p>
         <div>
+      </div>        
       </div>
+
     </div>
   );
 };

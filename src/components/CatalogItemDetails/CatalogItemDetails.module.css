@@ -1,3 +1,8 @@
+/* .boxItemDetails {
+    display: flex;
+    justify-content: center;
+} */
+
 .ratingLocation {
     display: flex;
     gap: 16px;
@@ -20,6 +25,8 @@
 .boxImage {
     display: flex;
     gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .name {

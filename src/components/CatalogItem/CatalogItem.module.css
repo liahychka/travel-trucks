@@ -23,15 +23,6 @@
     gap: 8px;
 }
 
-.itemFeatures {
-    /* margin-bottom: 24px; */
-}
-
-/* .boxik {
-    display: flex;
-    flex-direction: column;
-} */
-
 .namePrice {
     display: flex;
     justify-content: space-between;

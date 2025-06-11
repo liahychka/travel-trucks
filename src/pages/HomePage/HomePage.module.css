@@ -1,19 +1,22 @@
 .hero {
-    /* width: 100vw;
-    height: 100vh; */
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
     background-size: cover;
     background-image:
         url("./images/homepage-picture.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    padding-top: 260px;
     padding-left: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .title {
     font: 600 48px / 0.66667 "Inter", sans-serif;
     color: #f7f7f7;
-    padding-top: 260px;
     margin-bottom: 16px;
 }
 
