@@ -1,186 +1,97 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
 import css from './FilterComponent.module.css';
 import icons from '../icons/icons.svg';
-import { fetchCampersWithFilters } from "../../redux/campers/operations.js";
 
-const FilterComponent = () => {
-  const dispatch = useDispatch();
+const FilterComponent = ({ filters, setFilters, onSearch }) => {
+  const { location, equipment, vehicleType } = filters;
 
-  const [location, setLocation] = useState("");
-  const [equipment, setEquipment] = useState({
-    ac: false,
-    kitchen: false,
-    tv: false,
-    bathroom: false,
-    automatic: false
-  });
-  const [vehicleType, setVehicleType] = useState("");
+  const handleLocationChange = (e) => {
+    setFilters((prev) => ({ ...prev, location: e.target.value }));
+  };
 
-  const handleLocationChange = (e) => setLocation(e.target.value);
   const handleEquipmentChange = (e) => {
     const { name, checked } = e.target;
-    setEquipment((prev) => ({ ...prev, [name]: checked }));
+    setFilters((prev) => ({
+      ...prev,
+      equipment: { ...prev.equipment, [name]: checked },
+    }));
   };
-  const handleVehicleTypeChange = (e) => setVehicleType(e.target.value);
 
-  const handleSearch = () => {
-    dispatch(fetchCampersWithFilters({ location, equipment, vehicleType }));
+  const handleVehicleTypeChange = (e) => {
+    setFilters((prev) => ({ ...prev, vehicleType: e.target.value }));
   };
 
   return (
     <div className={css.boxFilter}>
       <div className={css.divLocation}>
         <label className={css.location}>Location</label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           value={location}
           onChange={handleLocationChange}
-            placeholder="City"
-            className={css.input}
-              />     
-          </div>
-          
-     <h4 className={css.nameFilter}>Filters</h4>
+          placeholder="City"
+          className={css.input}
+        />
+      </div>
 
-          <h4 className={css.vehicle}>Vehicle equipment</h4>
-    <ul className={css.listVehicle}>
-        <li className={css.itemFilter} >
-        <label className={css.label}>
-            <input 
-            type="checkbox" 
-            name="ac"
-            checked={equipment.ac}
-            onChange={handleEquipmentChange}
-            className={css.hiddenCheckbox}
-            />
-            <svg width="32" height="32" className={equipment.ac ? css.activeIcon : ""}>
-            <use href={`${icons}#icon-ac`} />
-            </svg>
-            <span>AC</span>
-        </label>
-        </li>
-  <li className={css.itemFilter}>
-    <label className={css.label}>
-      <input 
-        type="checkbox" 
-        name="kitchen"
-        checked={equipment.kitchen}
-        onChange={handleEquipmentChange} 
-        className={css.hiddenCheckbox} 
-      />
-      <svg width="32" height="32" className={equipment.kitchen ? css.activeIcon : ""}>
-        <use href={`${icons}#icon-kitchen`} />
-        </svg>
-        <span>Kitchen</span>
-    </label>
-  </li>
-
-  <li className={css.itemFilter}>
-    <label className={css.label}>
-      <input 
-        type="checkbox" 
-        name="tv"
-        checked={equipment.tv}
-        onChange={handleEquipmentChange} 
-        className={css.hiddenCheckbox} 
-      />
-      <svg width="32" height="32" className={equipment.tv ? css.activeIcon : ""}>
-        <use href={`${icons}#icon-tv`} />
-        </svg>
-       <span>TV</span>                   
-    </label>
-  </li>
-
-        <li className={css.itemFilter}>
-            <label className={css.label}>
-            <input 
-                type="checkbox" 
-                name="bathroom"
-                checked={equipment.bathroom}
-                onChange={handleEquipmentChange} 
-                className={css.hiddenCheckbox} 
-            />
-            
-            <svg width="32" height="32" className={equipment.bathroom ? css.activeIcon : ""}>
-                <use href={`${icons}#icon-bathroom`} />
-                          </svg>
-            <span>Bathroom</span>
+      <h4 className={css.nameFilter}>Filters</h4>
+      <h4 className={css.vehicle}>Vehicle equipment</h4>
+      <ul className={css.listVehicle}>
+        {[
+          { name: "ac", icon: "icon-ac", label: "AC" },
+          { name: "kitchen", icon: "icon-kitchen", label: "Kitchen" },
+          { name: "tv", icon: "icon-tv", label: "TV" },
+          { name: "bathroom", icon: "icon-bathroom", label: "Bathroom" },
+          { name: "automatic", icon: "icon-automatic", label: "Automatic" },
+        ].map(({ name, icon, label }) => (
+          <li key={name}
+            className={`${css.itemFilter} ${equipment[name] ? css.activeItem : ""}`} >
+            <label className={css.labelInput}>
+              <input
+                type="checkbox"
+                name={name}
+                checked={equipment[name]}
+                onChange={handleEquipmentChange}
+                className={css.hiddenCheckbox}
+              />
+              <svg width="32" height="32" className={equipment[name] ? css.activeIcon : ""}>
+                <use href={`${icons}#${icon}`} />
+              </svg>
+              <span>{label}</span>
             </label>
-        </li>
+          </li>
+        ))}
+      </ul>
 
-        <li className={css.itemFilter}>
-            <label className={css.label}>
-            <input 
-                type="checkbox" 
-                name="automatic"
-                checked={equipment.automatic}
-                onChange={handleEquipmentChange} 
-                className={css.hiddenCheckbox} 
-            />
-            
-            <svg width="32" height="32" className={equipment.automatic ? css.activeIcon : ""}>
-                <use href={`${icons}#icon-automatic`} />
-                          </svg>
-            <span>Automatic</span>
-            </label>
-        </li>
-        </ul>
-
-        <h3 className={css.nameVehicleType}>Vehicle type</h3>
-        <ul className={css.listVehicle}>
-        <li className={css.itemFilter}>
-            <label className={css.label}>
-            <input 
-                type="radio" 
-                name="vehicleType" 
-                value="panelTruck" 
-                checked={vehicleType === "panelTruck"}
+      <h3 className={css.nameVehicleType}>Vehicle type</h3>
+      <ul className={css.listVehicle}>
+        {[
+          { value: "panelTruck", icon: "icon-van", label: "Van" },
+          { value: "alcove", icon: "icon-alcove", label: "Alcove" },
+          { value: "fullyIntegrated", icon: "icon-fullyIntegrated", label: "Fully Integrated" },
+        ].map(({ value, icon, label }) => (
+          <li key={value}
+          className={`${css.itemFilter} ${vehicleType === value ? css.activeItem : ""}`}>
+            <label className={css.labelInput}>
+              <input
+                type="radio"
+                name="vehicleType"
+                value={value}
+                checked={vehicleType === value}
                 onChange={handleVehicleTypeChange}
-                className={css.hiddenCheckbox} 
-            />
-            <svg width="32" height="32" className={vehicleType === "panelTruck" ? css.activeIcon : ""}>
-                <use href={`${icons}#icon-van`} />
-                          </svg>
-            <span>Van</span>
+                className={css.hiddenCheckbox}
+              />
+              <svg width="32" height="32" className={vehicleType === value ? css.activeIcon : ""}>
+                <use href={`${icons}#${icon}`} />
+              </svg>
+              <span>{label}</span>
             </label>
-        </li>
+          </li>
+        ))}
+      </ul>
 
-        <li className={css.itemFilter}>
-            <label className={css.label}>
-            <input 
-                type="radio" 
-                name="vehicleType" 
-                value="alcove" 
-                checked={vehicleType === "alcove"}
-                onChange={handleVehicleTypeChange}
-                className={css.hiddenCheckbox} 
-            />
-            <svg width="32" height="32" className={vehicleType === "alcove" ? css.activeIcon : ""}>
-                <use href={`${icons}#icon-alcove`} />
-                          </svg>
-            <span>Alcove</span>
-            </label>
-        </li>
-
-        <li className={css.itemFilter}>
-            <label className={css.label}>
-            <input 
-                type="radio" 
-                name="vehicleType" 
-                value="fullyIntegrated" 
-                checked={vehicleType === "fullyIntegrated"}
-                onChange={handleVehicleTypeChange}
-                className={css.hiddenCheckbox} 
-            />
-            <svg width="32" height="32" className={vehicleType === "fullyIntegrated" ? css.activeIcon : ""}>
-                <use href={`${icons}#icon-fullyIntegrated`} />
-                          </svg>
-            <span>Fully Integrated</span>
-            </label>
-        </li>
-        </ul>
-      <button className={css.btnSearch} onClick={handleSearch} type="button" >Search</button>
+      <button className={css.btnSearch} onClick={onSearch}>
+        Search
+      </button>
     </div>
   );
 };

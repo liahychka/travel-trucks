@@ -12,8 +12,7 @@ const CatalogList = ({ campers }) => {
     setVisibleCount((prev) => prev + ITEMS_PER_PAGE);
   };
 
-  const filteredCampers = campers.items || [];
-  const displayedCampers = filteredCampers.slice(0, visibleCount);
+  const displayedCampers = campers.slice(0, visibleCount);
 
   return (
     <div>
@@ -21,14 +20,17 @@ const CatalogList = ({ campers }) => {
         {displayedCampers.map((camper) => (
           <li key={camper.id} className={css.box1}>
             <div className={css.boxForItemBtn}>
-              <CatalogItem {...camper}
-              kitchen={camper.kitchen ? "kitchen" : null}
-              AC={camper.AC ? "AC" : null}/>
+              <CatalogItem
+                {...camper}
+                kitchen={camper.kitchen ? "kitchen" : null}
+                AC={camper.AC ? "AC" : null}
+              />
             </div>
           </li>
         ))}
       </ul>
-      {visibleCount < filteredCampers.length && (
+
+      {visibleCount < campers.length && (
         <LoadMore handleLoadMoreClick={handleLoadMore} />
       )}
     </div>

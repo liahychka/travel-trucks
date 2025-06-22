@@ -9,7 +9,7 @@ const initialState = {
 
 const slice = createSlice({
   name: "campers",
-  initialState: initialState,
+  initialState,
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampersWithFilters.fulfilled, (state, action) => {

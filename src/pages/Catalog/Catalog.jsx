@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCampers, selectError, selectLoading } from "../../redux/campers/selectors.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCampersWithFilters } from "../../redux/campers/operations.js";
 import CatalogList from "../../components/CatalogList/CatalogList.jsx";
 import FilterComponent from "../../components/FilterComponent/FilterComponent.jsx";
@@ -12,19 +12,41 @@ const Catalog = () => {
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
 
+  const [filters, setFilters] = useState({
+    location: "",
+    equipment: {
+      ac: false,
+      kitchen: false,
+      tv: false,
+      bathroom: false,
+      automatic: false,
+    },
+    vehicleType: "",
+  });
+
   useEffect(() => {
-    dispatch(fetchCampersWithFilters({ location: "", equipment: {}, vehicleType: "" }));
-  }, [dispatch]);
+    dispatch(fetchCampersWithFilters(filters));
+  }, []);
+
+  const handleSearch = () => {
+    dispatch(fetchCampersWithFilters(filters));
+  };
+
+  const camperList = campers?.items || [];
 
   return (
     <div className={css.catalog}>
-      <FilterComponent />
-      {isLoading && null}
+      <FilterComponent
+        filters={filters}
+        setFilters={setFilters}
+        onSearch={handleSearch}
+      />
+      {isLoading && <p>Loading...</p>}
       {isError && <h2>Error...</h2>}
-      {campers.items && campers.items.length ? (
-        <CatalogList campers={campers} />
+      {camperList.length > 0 ? (
+        <CatalogList campers={camperList} />
       ) : (
-        <p>You don&apos;t have campers yet!</p>
+        <p>No campers found</p>
       )}
     </div>
   );
