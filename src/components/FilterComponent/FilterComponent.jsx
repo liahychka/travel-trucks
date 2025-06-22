@@ -1,6 +1,7 @@
 import css from './FilterComponent.module.css';
 import icons from '../icons/icons.svg';
 
+
 const FilterComponent = ({ filters, setFilters, onSearch }) => {
   const { location, equipment, vehicleType } = filters;
 

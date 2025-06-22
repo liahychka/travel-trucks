@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import { FavoritesProvider } from "./FavoritesContext/FavoritesContext.jsx";
 import Layout from "./components/Layout/Layout.jsx";
+import Loader from "./components/Loader/Loader.jsx";
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
@@ -18,7 +19,7 @@ const App = () => {
           <NavigationHeader />
     <Layout>  
           
-      <Suspense fallback={ <h2>Loading by suspense</h2> } >
+      <Suspense fallback={ <Loader /> } >
         <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/catalog" element={<Catalog />} />

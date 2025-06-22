@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCampers, selectError, selectLoading } from "../../redux/campers/selectors.js";
+import { selectCampers, selectError } from "../../redux/campers/selectors.js";
 import { useEffect, useState } from "react";
 import { fetchCampersWithFilters } from "../../redux/campers/operations.js";
 import CatalogList from "../../components/CatalogList/CatalogList.jsx";
@@ -9,7 +9,6 @@ import css from "./Catalog.module.css";
 const Catalog = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
-  const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
 
   const [filters, setFilters] = useState({
@@ -41,7 +40,6 @@ const Catalog = () => {
         setFilters={setFilters}
         onSearch={handleSearch}
       />
-      {isLoading && <p>Loading...</p>}
       {isError && <h2>Error...</h2>}
       {camperList.length > 0 ? (
         <CatalogList campers={camperList} />
